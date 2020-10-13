@@ -1,0 +1,191 @@
+﻿@model HealthNetwork.Models.RegisterViewModel
+
+@{
+
+    Layout = "~/Views/Shared/_landing.cshtml";
+}
+
+
+
+
+
+<style>
+
+    body {
+        color: #fffafa;
+    }
+
+    .description, .card-description, .footer-big p, .card .footer .stats {
+        color: #fffafa;
+    }
+
+    .card {
+        background: Transparent;
+    }
+
+
+    .form-group.no-border .form-control, .form-group.no-border .form-control + .input-group-prepend .input-group-text, .form-group.no-border .form-control + .input-group-append .input-group-text, .input-group.no-border .form-control, .input-group.no-border .form-control + .input-group-prepend .input-group-text, .input-group.no-border .form-control + .input-group-append .input-group-text {
+        background-color: rgba(9, 162, 245, 0.3);
+    }
+
+    .btn-primary {
+        background-color: #1a4c65;
+    }
+    
+   /* .full-page .full-page-background {
+        background-position: right center;
+    }*/
+</style>
+
+
+<div class="full-page register-page section-image" filter-color="blue" data-image="/img/Resized95LOGO.jpg">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 ml-auto">
+                    <div class="info-area info-horizontal mt-5">
+                        <div class="icon icon-primary">
+                            <i class="now-ui-icons media-2_sound-wave"></i>
+                        </div>
+                        <div class="description">
+                            <h5 class="info-title">Create</h5>
+                            <p class="description">
+                                Create and Post Content. Post videos, Blogs, and insights.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="info-area info-horizontal">
+                        <div class="icon icon-primary">
+                            <i class="now-ui-icons media-1_button-pause"></i>
+                        </div>
+                        <div class="description">
+                            <h5 class="info-title">Manage</h5>
+                            <p class="description">
+                                Subscribe to content trainers. Schedule consultations with trainers that are aligned with your goals
+                            </p>
+                        </div>
+                    </div>
+                    <div class="info-area info-horizontal">
+                        <div class="icon icon-info">
+                            <i class="now-ui-icons users_single-02"></i>
+                        </div>
+                        <div class="description">
+                            <h5 class="info-title">Build</h5>
+                            <p class="description">
+                                Build a better you by reaching out to trainers that specialize in your interest regardless of where you are. Your one stop shop for your health needs. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mr-auto">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="card card-signup text-center">
+                            <div class="card-header ">
+                                <h4 class="card-title">Register</h4>
+                                <div class="social">
+                                    <button class="btn btn-icon btn-round btn-linkedin">
+                                        <i class="fab fa-linkedin"></i>
+                                    </button>
+                                    <button class="btn btn-icon btn-round btn-google">
+                                        <i class="fab fa-google"></i>
+                                    </button>
+                                    <button class="btn btn-icon btn-round btn-facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+                                    <h5 class="card-description"> or be classical </h5>
+                                </div>
+                            </div>
+                            <div class="card-body ">
+
+
+                                <div class="input-group no-border form-control-lg">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="now-ui-icons users_circle-08"></i>
+                                        </div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.FirstName, new { placeholder = "First Name..", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                                    
+                                </div>
+                                <div class="input-group no-border form-control-lg">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="now-ui-icons users_circle-08"></i>
+                                        </div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.LastName, new {placeholder = "Last Name..", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                                    
+                                </div>
+                                <div class="input-group no-border form-control-lg">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="now-ui-icons ui-1_email-85"></i>
+                                        </div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.Email, new { @Name = "Email", placeholder = "Email..", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    
+                                </div>
+                                <div class="input-group no-border form-control-lg">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="now-ui-icons text_caps-small"></i>
+                                        </div>
+                                    </div>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password.." })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    
+                                </div>
+                                <div class="input-group no-border form-control-lg">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="now-ui-icons text_caps-small"></i>
+                                        </div>
+                                    </div>
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password..", @id="ConfirmPassword" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                    
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+                            <div class="card-footer ">
+                                <input class="btn btn-primary btn-round btn-lg" value="Get Moving" type="submit" />
+                            </div>
+                            
+                        </div>
+                    }
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+
+@section scripts
+
+{
+
+    <script>
+        $(document).ready(function () {
+            demo.checkFullPageBackgroundImage();
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
